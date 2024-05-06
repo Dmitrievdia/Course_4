@@ -33,11 +33,3 @@ class HeadHunter(BaseHH):
             self.vacancies.extend(vacancies)
             self.params['page'] += 1
         return self.vacancies
-
-
-''' закоментен иной вариант распаковки апишки'''
-# url = 'https://api.hh.ru/vacancies'
-# params = {'text': keyword, 'per_page': 10, 'area': '113'}
-# response = requests.get(url, params=params)  # 'area': '113' - Россия
-# data = response.json()
-# return data

@@ -42,8 +42,6 @@ class JSONSaver(BaseSaver):
     def delete_file(self) -> None:
         """
         Очищает информацию в файле.
-        Используем альтернативный вариант, если у нас уже открыт файл.
-        f.truncate(0) # need '0' when using r+
         """
         with open(self.file, 'r+', encoding='utf-8') as file:
             file.truncate(0)
