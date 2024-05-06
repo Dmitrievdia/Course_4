@@ -12,7 +12,7 @@ class BaseVacancy(ABC):
         self.salary_from = salary_from  # Предлагаемая з/п от
         self.salary_to = salary_to      # Предлагаемая з/п до
         self.description = description  # Описание вакансии
-        self.link = link                # Ссылка на вакансию
+        self._link = link               # Ссылка на вакансию
 
     @abstractmethod
     def __str__(self):
@@ -28,18 +28,22 @@ class Vacancy(BaseVacancy):
     link: str           # Ссылка на вакансию
 
     def __init__(self, title: str, city: str, salary_from: int, salary_to: int, description: str, link: str):
+        """
+
+        :rtype: object
+        """
         super().__init__(title, city, salary_from, salary_to, description, link)
 
     def __repr__(self):
         return (f"{self.title}, {self.city}, {self.salary_from},"
-                f"{self.salary_to}, {self.description}, {self.link}")
+                f"{self.salary_to}, {self.description}, {self._link}")
 
     def __str__(self):
         return (f"Вакансия: {self.title}. "
                 f"Город: {self.city}. "
                 f"Зарплата от {self.salary_from} до {self.salary_to}. "
                 f"Описание: {self.description}. "
-                f"Ссылка: {self.link}.")
+                f"Ссылка: {self._link}.")
 
     @property
     def title_data(self):
@@ -65,7 +69,7 @@ class Vacancy(BaseVacancy):
     @property
     def link_data(self):
         if self.link is not None:
-            return self.link
+            return self._link
         else:
             return "Отсутствует ссылка на вакансию"
 
